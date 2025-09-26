@@ -1,0 +1,66 @@
+No. 1 : Hitung rata-rata nilai setiap siswa dan menentukan nilai hurufnya
+
+Nilai Andi  : 80 , 70 
+Nilai Budi  : 60 , 75
+Nilai Citra : 90 , 85
+
+Rata-rata Nilai : 
+Andi  : (80 + 70) / 2 = 75      => B
+Budi  : (60 + 75) / 2 = 67.5    => C
+Citra : (90 + 85) / 2 = 87.5    => A
+
+Jadi Kesimpulannya, Hasil dari konversi nilai setiap siswa adalah :
+Andi mendapatkan nilai B dengan rata-rata 75
+Budi mendapatkan nilai C dengan rata-rata 67.5 
+Citra mendapatkan nilai A dengan rata-rata 87.5
+
+------------------------------------------------------------------------------------
+No. 2 : Ubah data nilai ke bentuk pivot
+
+[
+  "Andi"  => ["rata-rata" => 75, "nilai huruf" => "B"],
+  "Budi"  => ["rata-rata" => 67.5, "nilai huruf" => "C"],
+  "Citra" => ["rata-rata" => 87.5, "nilai huruf" => "A"],
+]
+
+------------------------------------------------------------------------------------
+No. 3 : Nama siswa dengan nilai tengah dari nilai matematika
+
+Nilai Matematika :
+Andi  : 80 (Nilai tengah / Bukan terbaik dan bukan terburuk)
+Budi  : 60 
+Citra : 90
+
+Setelah diurutkan : 60 , 80, 90
+Jadi siswa dengan nilai tengah dari nilai matematika adalah Andi dengan nilai 80
+
+------------------------------------------------------------------------------------
+No. 4 : Jumlah siswa tiap nilai hurur setiap mapel
+
+Mapel Matematika :
+Andi  : 80 => B
+Budi  : 60 => C
+Citra : 90 => A
+
+Jadi, jumlah siswa tiap nilai huruf pada mapel Matematika adalah :
+A = 1 (Citra)
+B = 1 (Andi)
+C = 1 (Budi)
+D = 0
+
+Mapel Bahasa :
+Andi  : 70 => B
+Budi  : 75 => B
+Citra : 85 => A
+
+Jadi, jumlah siswa tiap nilai huruf pada mapel Bahasa adalah :
+A = 1 (Citra)
+B = 2 (Andi , Budi)
+C = 0
+D = 0
+
+------------------------------------------------------------------------------------
+No. 5 : Hitung rata-rata tiap mapel dan konversi ke huruf
+
+Rata-rata Mapel Matematika : (80 + 60 + 90) / 3 = 76.66 => B 
+Rata-rata Mapel Bahasa     : (70 + 75 + 85) / 3 = 76.66 => B 
