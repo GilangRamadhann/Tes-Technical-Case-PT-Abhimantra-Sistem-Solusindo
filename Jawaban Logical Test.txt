@@ -17,10 +17,20 @@ Citra mendapatkan nilai A dengan rata-rata 87.5
 ------------------------------------------------------------------------------------
 No. 2 : Ubah data nilai ke bentuk pivot
 
+Maaf kak, untuk no. 2 ini saya agak bingung maksud dari soal ini adalah lanjutan dari soal no. 1 ini atau bukan jadi saya buat jawabannya 2 versi yang berbeda hehehe.
+
+Jika yang dimaksud lanjutan dari no. 1 maka jawaban saya seperti ini :
 [
   "Andi"  => ["rata-rata" => 75, "nilai huruf" => "B"],
   "Budi"  => ["rata-rata" => 67.5, "nilai huruf" => "C"],
   "Citra" => ["rata-rata" => 87.5, "nilai huruf" => "A"],
+]
+
+tetapi, jika yang dimaksud bukan lanjutan no. 1, maka jawabannya :
+[
+  "Andi"  => ["Matematika" => 80, "Bahasa" => 70],
+  "Budi"  => ["Matematika" => 60, "Bahasa" => 75],
+  "Citra" => ["Matematika" => 90, "Bahasa" => 85],
 ]
 
 ------------------------------------------------------------------------------------
