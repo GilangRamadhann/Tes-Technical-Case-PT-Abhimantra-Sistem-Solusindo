@@ -1,81 +1,61 @@
 <script setup>
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
-import { router, useForm, Link } from "@inertiajs/vue3";
+import DashboardLayout from "@/Layouts/DashboardLayout.vue"; // navbar khusus dashboard
+import { Link, useForm, router } from "@inertiajs/vue3";
+
 defineProps({
     stat: Object,
-    items: Object,
-    filters: Object,
-    siswas: Array,
-    kelasOpt: Array,
-    mapelOpt: Array,
+    items: Object, // data tabel nilai (paginate)
+    filters: Object, // optional
+    siswas: Array, // untuk form tambah/edit
+    kelasOpt: Array, // filter kelas
+    mapelOpt: Array, // filter mapel
 });
 
-const form = useForm({ siswa_id: "", kelas: "", mapel: "", nilai: "" });
-const editForm = useForm({
-    id: null,
-    siswa_id: "",
-    kelas: "",
-    mapel: "",
-    nilai: "",
-});
+// form import file
 const importForm = useForm({ file: null });
-
-const submit = () => form.post("/nilai");
-const startEdit = (row) => {
-    editForm.id = row.id;
-    editForm.siswa_id = row.siswa_id;
-    editForm.kelas = row.kelas;
-    editForm.mapel = row.mapel;
-    editForm.nilai = row.nilai;
-};
-const update = () => editForm.put(`/nilai/${editForm.id}`);
-const remove = (id) => router.delete(`/nilai/${id}`);
-const doFilter = (e) => {
-    e.preventDefault();
-    router.get("/dashboard", {
-        kelas: e.target.kelas.value || null,
-        mapel: e.target.mapel.value || null,
-        search: e.target.search.value || null,
-    });
-};
-const doImport = () => {
+const doImport = () =>
     importForm.post("/nilai/import", { forceFormData: true });
+
+// aksi tabel
+const removeRow = (id) => router.delete(`/nilai/${id}`);
+const startEdit = (row) => {
+    // contoh simpel: arahkan ke halaman Nilai dengan search nama biar langsung ketemu
+    router.get("/nilai", { search: row.siswa?.nama });
 };
 </script>
 
 <template>
-    <AuthenticatedLayout>
+    <DashboardLayout>
         <div class="space-y-8">
-            <!-- Header + Quick Stats -->
-            <div class="space-y-6">
-                <div class="flex items-center justify-between">
-                    <h1 class="text-2xl font-semibold">Dashboard</h1>
-                    <div class="hidden sm:flex gap-2">
-                        <Link
-                            href="/siswa"
-                            class="px-4 py-2 bg-blue-600 text-white rounded-lg"
-                            >Kelola Siswa</Link
-                        >
-                        <Link
-                            href="/nilai"
-                            class="px-4 py-2 bg-emerald-600 text-white rounded-lg"
-                            >Kelola Nilai</Link
-                        >
-                    </div>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="p-6 rounded-2xl bg-white shadow border">
-                        <div class="text-gray-500">Total Siswa</div>
-                        <div class="text-4xl font-bold">{{ stat.siswa }}</div>
-                    </div>
-                    <div class="p-6 rounded-2xl bg-white shadow border">
-                        <div class="text-gray-500">Total Nilai</div>
-                        <div class="text-4xl font-bold">{{ stat.nilai }}</div>
-                    </div>
+            <div class="flex items-center justify-between">
+                <h1 class="text-2xl font-semibold">Dashboard</h1>
+                <div class="hidden sm:flex gap-2">
+                    <Link
+                        href="/siswa"
+                        class="px-4 py-2 bg-blue-600 text-white rounded-lg"
+                        >Kelola Siswa</Link
+                    >
+                    <Link
+                        href="/nilai"
+                        class="px-4 py-2 bg-emerald-600 text-white rounded-lg"
+                        >Kelola Nilai</Link
+                    >
                 </div>
             </div>
 
-            <!-- TABEL + IMPORT/EXPORT -->
+            <!-- Kartu Statistik -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="p-6 rounded-2xl bg-white shadow border">
+                    <div class="text-gray-500">Total Siswa</div>
+                    <div class="text-4xl font-bold">{{ stat.siswa }}</div>
+                </div>
+                <div class="p-6 rounded-2xl bg-white shadow border">
+                    <div class="text-gray-500">Total Nilai</div>
+                    <div class="text-4xl font-bold">{{ stat.nilai }}</div>
+                </div>
+            </div>
+
+            <!-- Tabel Nilai + Import/Export -->
             <div class="p-4 bg-white rounded-2xl shadow overflow-x-auto">
                 <div class="flex items-center justify-between mb-3">
                     <h2 class="font-semibold">Data Nilai</h2>
@@ -135,7 +115,7 @@ const doImport = () => {
                                 </button>
                                 <button
                                     class="px-3 py-1 rounded-lg bg-rose-600 text-white"
-                                    @click="remove(row.id)"
+                                    @click="removeRow(row.id)"
                                 >
                                     Delete
                                 </button>
@@ -160,5 +140,5 @@ const doImport = () => {
                 </div>
             </div>
         </div>
-    </AuthenticatedLayout>
+    </DashboardLayout>
 </template>
