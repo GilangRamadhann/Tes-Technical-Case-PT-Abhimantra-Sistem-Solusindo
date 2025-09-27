@@ -1,13 +1,12 @@
 <?php
-
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\SiswaController;
 use Illuminate\Support\Facades\Route;
 
-Route::redirect('/', '/login'); // saat buka '/', diarahkan ke login
+Route::redirect('/', '/login'); // pertama kali buka -> login
 
-Route::middleware(['auth','verified'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
 
     // Siswa

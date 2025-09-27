@@ -1,5 +1,6 @@
 <script setup>
 import { Head, Link, useForm } from "@inertiajs/vue3";
+import GuestLayout from "@/Layouts/GuestLayout.vue";
 
 const form = useForm({
     name: "",
@@ -14,11 +15,11 @@ const submit = () =>
 </script>
 
 <template>
-    <Head title="Register" />
-    <div class="min-h-screen flex items-center justify-center bg-gray-100 p-4">
-        <div class="w-full max-w-md bg-white shadow rounded-xl p-6 space-y-6">
-            <div>
-                <h1 class="text-2xl font-semibold">Register</h1>
+    <GuestLayout>
+        <Head title="Register" />
+        <div class="space-y-5">
+            <div class="space-y-1 text-center">
+                <h2 class="text-xl font-semibold">Register</h2>
                 <p class="text-sm text-gray-500">Buat akun baru</p>
             </div>
 
@@ -27,7 +28,7 @@ const submit = () =>
                     <label class="text-sm">Nama</label>
                     <input
                         v-model="form.name"
-                        class="mt-1 w-full border rounded px-3 py-2"
+                        class="mt-1 w-full border rounded-lg px-3 py-2"
                         required
                         autofocus
                     />
@@ -38,12 +39,13 @@ const submit = () =>
                         {{ form.errors.name }}
                     </div>
                 </div>
+
                 <div>
                     <label class="text-sm">Email</label>
                     <input
                         v-model="form.email"
                         type="email"
-                        class="mt-1 w-full border rounded px-3 py-2"
+                        class="mt-1 w-full border rounded-lg px-3 py-2"
                         required
                     />
                     <div
@@ -53,12 +55,13 @@ const submit = () =>
                         {{ form.errors.email }}
                     </div>
                 </div>
+
                 <div>
                     <label class="text-sm">Password</label>
                     <input
                         v-model="form.password"
                         type="password"
-                        class="mt-1 w-full border rounded px-3 py-2"
+                        class="mt-1 w-full border rounded-lg px-3 py-2"
                         required
                         autocomplete="new-password"
                     />
@@ -69,18 +72,20 @@ const submit = () =>
                         {{ form.errors.password }}
                     </div>
                 </div>
+
                 <div>
                     <label class="text-sm">Konfirmasi Password</label>
                     <input
                         v-model="form.password_confirmation"
                         type="password"
-                        class="mt-1 w-full border rounded px-3 py-2"
+                        class="mt-1 w-full border rounded-lg px-3 py-2"
                         required
                     />
                 </div>
+
                 <button
                     :disabled="form.processing"
-                    class="w-full bg-emerald-600 text-white py-2 rounded hover:bg-emerald-700"
+                    class="w-full bg-emerald-600 text-white py-2 rounded-lg hover:bg-emerald-700"
                 >
                     Daftar
                 </button>
@@ -93,5 +98,5 @@ const submit = () =>
                 >
             </div>
         </div>
-    </div>
+    </GuestLayout>
 </template>

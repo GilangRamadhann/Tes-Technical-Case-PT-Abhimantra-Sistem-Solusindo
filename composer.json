@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "name": "laravel/laravel",
     "type": "project",
     "description": "The skeleton application for the Laravel framework.",
@@ -71,4 +72,14 @@
     },
     "minimum-stability": "stable",
     "prefer-stable": true
+=======
+    "require": {
+        "maatwebsite/excel": "^2.1"
+    },
+    "config": {
+        "allow-plugins": {
+            "kylekatarnls/update-helper": true
+        }
+    }
+>>>>>>> 15a6528 (update)
 }

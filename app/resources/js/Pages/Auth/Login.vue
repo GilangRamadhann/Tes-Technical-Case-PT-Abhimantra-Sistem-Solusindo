@@ -1,5 +1,6 @@
 <script setup>
 import { Head, Link, useForm } from "@inertiajs/vue3";
+import GuestLayout from "@/Layouts/GuestLayout.vue";
 
 const form = useForm({ email: "", password: "", remember: false });
 const submit = () =>
@@ -7,11 +8,19 @@ const submit = () =>
 </script>
 
 <template>
-    <Head title="Log in" />
-    <div class="min-h-screen flex items-center justify-center bg-gray-100 p-4">
-        <div class="w-full max-w-md bg-white shadow rounded-xl p-6 space-y-6">
-            <div>
-                <h1 class="text-2xl font-semibold">Login</h1>
+    <GuestLayout>
+        <Head title="Login" />
+        <div class="space-y-5">
+            <!-- Pesan sukses setelah register -->
+            <div
+                v-if="$page.props.flash && $page.props.flash.status"
+                class="p-3 rounded-lg border border-emerald-200 bg-emerald-50 text-emerald-700"
+            >
+                {{ $page.props.flash.status }}
+            </div>
+
+            <div class="space-y-1 text-center">
+                <h2 class="text-xl font-semibold">Login</h2>
                 <p class="text-sm text-gray-500">
                     Masuk untuk mengakses dashboard
                 </p>
@@ -23,7 +32,7 @@ const submit = () =>
                     <input
                         v-model="form.email"
                         type="email"
-                        class="mt-1 w-full border rounded px-3 py-2"
+                        class="mt-1 w-full border rounded-lg px-3 py-2"
                         autofocus
                         required
                     />
@@ -39,7 +48,7 @@ const submit = () =>
                     <input
                         v-model="form.password"
                         type="password"
-                        class="mt-1 w-full border rounded px-3 py-2"
+                        class="mt-1 w-full border rounded-lg px-3 py-2"
                         required
                         autocomplete="current-password"
                     />
@@ -50,13 +59,10 @@ const submit = () =>
                         {{ form.errors.password }}
                     </div>
                 </div>
-                <label class="inline-flex items-center gap-2 text-sm">
-                    <input type="checkbox" v-model="form.remember" /> Remember
-                    me
-                </label>
+
                 <button
                     :disabled="form.processing"
-                    class="w-full bg-gray-900 text-white py-2 rounded hover:bg-black"
+                    class="w-full bg-gray-900 text-white py-2 rounded-lg hover:bg-black"
                 >
                     Masuk
                 </button>
@@ -69,5 +75,5 @@ const submit = () =>
                 >
             </div>
         </div>
-    </div>
+    </GuestLayout>
 </template>
