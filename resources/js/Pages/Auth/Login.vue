@@ -59,10 +59,7 @@ const submit = () =>
                         {{ form.errors.password }}
                     </div>
                 </div>
-                <label class="inline-flex items-center gap-2 text-sm">
-                    <input type="checkbox" v-model="form.remember" /> Remember
-                    me
-                </label>
+
                 <button
                     :disabled="form.processing"
                     class="w-full bg-gray-900 text-white py-2 rounded-lg hover:bg-black"
